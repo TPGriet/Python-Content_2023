@@ -1,1 +1,174 @@
+1. Write a program that asks the user to enter a word and then prints that word 200 times, each on the
+same line.
+TESTCASES:
+----------------------
+case = t1
+input=griet
+output=
+griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet 
+
+PROGRAM:
+--------------------
+word = input()
+for i in range(200):
+    print(word, end=' ')
+print()
+
+2. Write a program that uses a for loop to print 2, 6, 10, 14, 18, . . . , 98, 102, all on the same line separated by spaces
+Test case example: 
+------------------
+case =t1
+input=
+output=2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98 102 
+
+PROGRAM:
+-------------------
+for i in range(2,103,4):
+    print(i, end=' ')
+
+3. Write a program that uses a for loop to print 29, 28, 27, 26, 26, . . . , 5, 4, all on the same line separated
+by spaces
+
+Test case example:
+-----------------------
+case =t1
+input=
+output=
+29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 
+
+PROGRAM:
+--------------------
+for i in range(29,3,-1):
+    print(i, end=' ')
+print()
+
+4. Write a program that asks the user to enter a word and then prints that word 25 times 
+Test case example:
+----------------------
+case = t1
+input=griet
+output=
+griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet griet 
+
+PROGRAM:
+------------------------
+word = input()
+for i in range(25):
+    print(word,end=" ")
+
+5. Print 10 G’s, followed by 5 copies of 'RIE', followed by one 'T'
+Test case example:
+-------------------
+case =t1
+input=
+output=
+GGGGGGGGGGRIERIERIERIERIET
+
+PROGRAM:
+-----------------------
+for i in range(10):
+    print('G', end='')
+for i in range(5):
+    print('RIE', end='')
+print('T')
+
+6. Write a program that uses a for loop to print the output below:
+1. A
+2. A
+3. A
+4. A
+5. A
+
+Test case example:
+--------------------------------
+case =t1
+input=
+output=
+1. A
+2. A
+3. A
+4. A
+5. A
+
+PROGRAM:
+------------------------
+for i in range(1,6):
+    print(i,'.A', end='\n')
+
+7. Print out the numbers from 1 to 20 and their square roots, rounded to 2 decimal places, with the square root of the number being on the same line as the number.
+
+Test case example:
+------------------------
+case =t1
+input=
+output=
+1 1.0
+2 1.41
+3 1.73
+4 2.0
+5 2.24
+6 2.45
+7 2.65
+8 2.83
+9 3.0
+10 3.16
+11 3.32
+12 3.46
+13 3.61
+14 3.74
+15 3.87
+16 4.0
+17 4.12
+18 4.24
+19 4.36
+20 4.47
+
+PROGRAM:
+-----------------------
+from math import sqrt
+for i in range(1,21):
+    print(i, round(sqrt(i), 2))
+
+8. Write a program to ask the user to enter 5 numbers, then print out the two smallest numbers entered (they might have the same value).
+
+Test case example:
+------------------
+case = t1
+input=5
+4
+3
+4
+2
+output=
+2 3
+
+case = t2
+input=0
+-1
+-1
+4
+2
+output=
+-1 0
+
+PROGRAM:
+---------------------------
+a = eval(input())
+b = eval(input())
+if a < b:
+    small1 = a
+    small2 = b
+else:
+    small1 = b
+    small2 = a
+for i in range(3):
+    a = eval(input())
+    if small1 < a < small2:
+        small2 = a
+    elif a < small1:
+        small2 = small1
+        small1 = a
+print(small1, small2)
+
+
 
