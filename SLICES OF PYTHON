@@ -1,1 +1,163 @@
+1. Write a Python Program to Create a new string made up of First 2 and Last 2 Characters of the given string
+TESTCASES:
+---------------
+case = t1
+Fail message="OOPS you picked a wrong slice, try again!!"
+input=ARUNKUMAR
+output=ARAR
+
+case = t1
+input=GRIET
+output=GRET
+
+PROGRAM:
+--------------------
+string=input()
+count=0
+for i in string:
+      count=count+1
+new=string[0:2]+string[count-2:count]
+print(new)
+
+2. As u guys know Allu Arjun and Sneha Reddy are married for a long time. Sneha Reddy now wants to update her twitter name as: Sneha Allu Reddy. Write a python program to do the same.
+Note: use only string slicing method.
+TESTCASES:
+-----------------
+case = t1
+input=ALLU ARJUN
+SNEHA REDDY
+output=SNEHA ALLU REDDY
+
+case = t1
+input=ARUN KONGI
+VIKS GAUR
+output=VIKS ARUN GAUR
+
+case = t1
+input=ARUN KUMAR KONGI
+VIKS GAUR
+output=VIKS ARUN GAUR
+
+PROGRAM:
+----------------
+s1=input()
+s2=input()
+i1=s1.find(" ")
+i2=s2.find(" ")
+s3=s1[:i1]
+s4=s2[:i2]
+s4=s4+" "+s3+s2[i2:]
+print(s4)
+
+3. Write a python program to create a string made of the middle three characters
+TESTCASES:
+-------------------
+case=t1
+input=ARUNKUMAR
+output=NKU
+
+case=t2
+input=Arsenal@1234
+output=al@
+
+PROGRAM:
+-----------------
+def middle(str1):
+
+    
+    mi = int(len(str1) / 2)
+
+  
+    res = str1[mi - 1:mi + 2]
+    print("Middle three chars are:", res)
+
+var=input()
+middle(var)
+
+4. Ask the user to enter a string and remove first 'n' characters from it
+TESTCASES:
+----------------------
+case=t1
+input=ARUNKUMAR 4
+output=KUMAR
+
+case=t2
+input=Arsenal@1234 8
+output=1234
+
+PROGRAM:
+-----------------------
+def remove_chars(word, n):
+    x = word[n:]
+    return x
+a,b=input().split()
+b=int(b)
+c=remove_chars(a,b)
+print(c)
+
+5. Enter a string and count number of times substring is repeated in it
+TESTCASES:
+-------------------
+case=t1
+input=Fear leads to anger; anger leads to hatred; hatred leads to conflict; conflict leads to suffering
+leads
+output=leads repeated 4 times
+
+case=t2
+input=It rained on his lousy tombstone, and it rained on the grass on his stomach. It rained all over the place
+It rained
+output=It rained repeated 2 times
+
+PROGRAM:
+-----------------------
+def count(statement,s1):
+    count = 0
+    le=len(s1)
+    for i in range(len(statement) - 1):
+        count += statement[i:i+le] == s1
+    return count
+
+var=input()
+s1=input()
+count=count(var,s1)
+print("{} repeated {} times".format(s1,count))
+
+6. Check if a given string is palindrome not (Note: Don't use any inbuilt functions).
+ Use only slicing concept and format functions to read string properly.
+TESTCASES:
+------------------------
+case=t1
+input= madam 
+output=madam is a palindrome 
+
+case=t2
+input=arun  
+output=arun is not a palindrome
+
+PROGRAM:
+-----------------
+str = input().strip()
+if(str==str[::-1]): 
+    print(str,'is a palindrome')
+else:
+    print(str,'is not a palindrome')
+
+7. Convert the first 'n' characters to uppercase letters in a given string (Using Slicing method only)
+and print the updated string. 
+Note: Read string and n characters on the same line.
+TESTCASES:
+-------------------
+case=t1
+input=arsenalgunners 6
+output=ARSENALgunners
+
+case=t2
+input=grietpython 5
+output=GRIETpython
+
+PROGRAM:
+------------------------
+str,n=input().split()
+n=int(n)
+print(str[:n].upper() + str[n:])
 
