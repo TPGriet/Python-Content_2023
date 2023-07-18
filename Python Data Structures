@@ -1,1 +1,179 @@
+1.Write a program that asks the user to enter a list of at least five integers. Do the following:
+(a)	Print out the total number of items in the list.
+(b)	Print out the fourth item (index 3) in the list.
+(c)	Print out the last three items in the list.
+(d)	Print out all the items in the list except the first two.
+(e)	Print out the list in reverse order.
+(f)	Print out the largest and smallest values in the list.
+(g)	Print out the sum of all the values in the list.
+(h)	If the list contains a zero, print out the index of the first zero in the list, and otherwise print out a message saying there are no zeroes.
+(i)	Sort the list and print out the list after sorting.
+(j)	Delete the first item from the (now sorted) list and print out the new list.
+(k)	Change the second-to-last item in the list to 9876 and print out the new list.
+(l)	Append the value -500 to the end of the list and print out the new list.
 
+Test case example:
+-----------------------
+case=t1
+input=20,10,50,40,30
+output=
+(a) Number of items: 5
+(b) Fourth item: 40
+(c) Last 3 items: (50, 40, 30)
+(d) Everything except first two items: (50, 40, 30)
+(e) Reversed: (30, 40, 50, 10, 20)
+(f) Largest: 50 Smallest: 10
+(g) Sum: 150
+(h) No zeroes in the list.
+(i) Now sorted: [10, 20, 30, 40, 50]
+(j) After deleting first item: [20, 30, 40, 50]
+(k) After changing second-to-last item: [20, 30, 9876, 50]
+(l) After appending -500 to list: [20, 30, 9876, 50, -500]
+
+case=t2
+input=6,1,8,5,6,4,3
+output=
+(a) Number of items: 7
+(b) Fourth item: 5
+(c) Last 3 items: (6, 4, 3)
+(d) Everything except first two items: (8, 5, 6, 4, 3)
+(e) Reversed: (3, 4, 6, 5, 8, 1, 6)
+(f) Largest: 8 Smallest: 1
+(g) Sum: 33
+(h) No zeroes in the list.
+(i) Now sorted: [1, 3, 4, 5, 6, 6, 8]
+(j) After deleting first item: [3, 4, 5, 6, 6, 8]
+(k) After changing second-to-last item: [3, 4, 5, 6, 9876, 8]
+(l) After appending -500 to list: [3, 4, 5, 6, 9876, 8, -500]
+
+case=t3
+input=-1,0,5,6,7,8
+output=
+(a) Number of items: 6
+(b) Fourth item: 6
+(c) Last 3 items: (6, 7, 8)
+(d) Everything except first two items: (5, 6, 7, 8)
+(e) Reversed: (8, 7, 6, 5, 0, -1)
+(f) Largest: 8 Smallest: -1
+(g) Sum: 25
+(h) First zero is at: 1
+(i) Now sorted: [-1, 0, 5, 6, 7, 8]
+(j) After deleting first item: [0, 5, 6, 7, 8]
+(k) After changing second-to-last item: [0, 5, 6, 9876, 8]
+(l) After appending -500 to list: [0, 5, 6, 9876, 8, -500]
+
+PROGRAM:
+-------------------------
+L = eval(input())
+print('(a) Number of items:', len(L))
+print('(b) Fourth item:', L[3])
+print('(c) Last 3 items:', L[-3:])
+print('(d) Everything except first two items:', L[2:])
+print('(e) Reversed:', L[::-1])
+print('(f) Largest:', max(L),'Smallest:', min(L))
+print('(g) Sum:', sum(L))
+if 0 in L:
+    print('(h) First zero is at:', L.index(0))
+else:
+    print('(h) No zeroes in the list.')
+L=list(L)
+L.sort()
+print('(i) Now sorted:', L)
+del L[0]
+print('(j) After deleting first item:', L)
+L[-2] = 9876
+print('(k) After changing second-to-last item:', L)
+L.append(-500)
+print('(l) After appending -500 to list:', L)
+
+3. Write a program that asks the user to enter a list of numbers with some of the values greater than 10. 
+Print out the smallest item in the list that is larger than 10
+
+Test case example:
+-----------------------------
+case=t1
+input=45,67,34,78,90,345,890
+output=Smallest number greater than 10 is: 34
+
+case=t2
+input=12,40,60,12,67,30,89,-1,78,90
+output=Smallest number greater than 10 is: 12
+
+case=t3
+input=0,0,0,0,0,1,0,0,1,1,45,600
+output=Smallest number greater than 10 is: 45
+
+case=t4
+input=10,10,10,10,10,20,20,10,20,10
+output=Smallest number greater than 10 is: 20
+
+PROGRAM:
+------------------------------
+L = eval(input())
+
+smallest = max(L)
+for x in L:
+    if 10 < x < smallest:
+        smallest = x
+print('Smallest number greater than 10 is:', smallest)
+
+4.  Write a program that asks the user to enter two lists of the same length. 
+Then create a new list where the entry at each index i in the new list is the larger of the entries at index i of the user’s two lists. 
+For instance, if the two lists are [1,25,3] and [18,2,30], then new list would be [18,25,30].
+#Test case example:
+---------------------------
+case=t1
+input=67,88,12,56,78
+34,89,123,345,909
+output=[67, 89, 123, 345, 909]
+
+case=t2
+Fail message="hidden test case"
+input=56,1,2,89,45,9
+90,1,67,2,78,100
+output=[90, 1, 67, 89, 78, 100]
+
+PROGRAM:
+---------------------------------
+L = eval(input())
+M = eval(input())
+N = []
+for i in range(len(L)):
+    if L[i] > M[i]:
+        N.append(L[i])
+    else:
+        N.append(M[i])
+print(N)
+
+5. Write a program that asks the user to enter two lists of the same size.
+Then put the lists together into a new list by alternately taking items from the two lists, like in a riffle shuffle. 
+For instance, if one list is [1,2, 3] and the other is [7,8, 9], the new list would be [1,7, 2, 8, 3, 9].
+Test case example:
+--------------------------
+case=t1
+input=2,1,56,78,1,234,567,90
+1,5,6,7,34,89,123,890
+output=[2, 1, 1, 5, 56, 6, 78, 7, 1, 34, 234, 89, 567, 123, 90, 890]
+
+case=t2
+input=1,2,3,4,5
+6,7,8,9,1
+output=[1, 6, 2, 7, 3, 8, 4, 9, 5, 1]
+
+case=t3
+Fail message="General Hidden valid test case"
+input=4,3,7,9
+3,1,2,0
+output=[4, 3, 3, 1, 7, 2, 9, 0]
+
+PROGRAM:
+-------------------------------
+L = eval(input())
+M = eval(input())
+N = []
+for i in range(len(L)):
+    N.append(L[i])
+    N.append(M[i])
+print(N)
+
+6. 
