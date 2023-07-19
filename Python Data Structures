@@ -86,6 +86,51 @@ print('(k) After changing second-to-last item:', L)
 L.append(-500)
 print('(l) After appending -500 to list:', L)
 
+2. Write a Python program to remove characters that have odd index values in a given string.
+Test case example:
+-----------------------------------
+case=t1
+input=6
+1
+9
+7
+56
+4
+3
+output=Largest number: 56
+
+case=t2
+Fail message="hidden test case"
+input=10
+-1
+5
+8
+9
+45
+67
+90
+123
+567
+789
+output= Largest Number: 789
+
+PROGRAM:
+-----------------------
+a=[]
+n=int(input())
+for i in range(1,n+1):
+    b=int(input())
+    a.append(b)
+print('(f) Largest:', max(a), '  Smallest:', min(a))
+
+\*'''a=[]
+n=int(input())
+for i in range(1,n+1):
+    b=int(input())
+    a.append(b)
+a.sort()
+print(a[n-1])'''*/
+
 3. Write a program that asks the user to enter a list of numbers with some of the values greater than 10. 
 Print out the smallest item in the list that is larger than 10
 
@@ -176,4 +221,520 @@ for i in range(len(L)):
     N.append(M[i])
 print(N)
 
-6. 
+6. Write a program that rotates all the elements in a list one element to the left, with the first element rotating to the end.
+For instance, if the list is [1,2,3,4], it would rotate into [2,3,4,1].
+# Test case example:
+--------------------------
+case=t1
+input=1,2,3,4,5
+output=[2, 3, 4, 5, 1]
+
+case=t2
+Fail message="General hidden test case"
+input=4,5,6,7,8,1,2,378,1
+output=[5, 6, 7, 8, 1, 2, 378, 1, 4]
+
+case=t3
+input=0,1,56,3,12,56
+output=[1, 56, 3, 12, 56, 0]
+
+PROGRAM:
+------------------------
+L = eval(input())
+L=list(L)
+save = L[0]
+for i in range(len(L)-1):
+    L[i] = L[i+1]
+L[-1] = save
+print(L)
+
+7. Write a program that asks the user to enter a list of strings and a list of indices. 
+Then create a new list that consists of all the strings from the user’s list except for those at the indices from the list of indices. 
+For instance, if the list of strings is ['a','bc','d','e','fg'] and the list of indices is [2,4], then the new list would be ['a','bc','e'].
+
+#Test case example:
+-----------------------------
+case=t1
+input=RCB,GUNNER,ARSENAL,KOHLI,SAKA
+3,5
+output=index out of range
+
+case=t2
+input=arun,rcb,gunner,arsenal,saka
+2,4
+output=['arun', 'rcb', 'arsenal']
+
+case=t3
+input=1,2,3,4,5,6,7
+3,5
+output=['1', '2', '3', '5', '7']
+
+case=t4
+Fail message="general hidden test case"
+input=a,b,c,d,e,f
+0,4
+output=['b', 'c', 'd', 'f']
+
+PROGRAM:
+--------------------------------------
+L = input().split(',')
+M  = input().split(',')
+M = [int(index) for index in M]
+if any(index<0 or index>= len(L) for index in M):
+        print("Index out of range")
+else:
+    new_list = [L[i] for i in range(len(L)) if i not in M]
+    print(new_list)
+
+8. Count the number of strings where the string length is 2 or more  and the first and last character are same from a given list of strings. 
+  
+  Input Format: Read number of strings as 'n' and read strings one by one.. (you can use combination of maps and lambda functions)
+  Output conditions: If any string length is less than 2 print error message as for example: "String 'A' has length less than 2."
+                     and print the count of remaining strings which match the first and last characters.
+
+Test case example:
+----------------------------
+case=t1
+input=5
+mom
+madam
+go deliver a vile dog
+121
+arun
+output=count=4
+
+case=t2
+input=5
+1221
+Arun
+A
+B
+mom
+output=String 'A' has length less than 2.
+String 'B' has length less than 2.
+count=2
+
+case=t3
+Fail message="general hidden test case"
+input=5
+1221
+1
+2
+1
+45
+output=String '1' has length less than 2.
+String '2' has length less than 2.
+String '1' has length less than 2.
+count=1
+
+PROGRAM:
+--------------------------------
+n = int(input())
+words = list(map(lambda i: input(), range(n)))
+ctr = 0
+for word in words:
+    if len(word) < 2:
+            print("String '"+ word +"' has length less than 2.")
+            #print("String '{}' has length less than 2.".format(word))
+    elif word[0] == word[-1]:
+      ctr += 1
+  
+print("count=",ctr)
+
+9. 	Write a Python program to calculate the difference between the two lists and create a new list out of it.
+Test case example:
+-------------------------
+case=t1
+input=1 1 2 2 3
+1 2 4 5 3
+output=
+difference between two lists:  [4, 5]
+
+case=t2
+Fail Message="Test Case didn't match"
+input=2 0 1 5 78 3 5 6 1 2 3 4 
+6 8 3 2 5 90 1 45 67 0 1
+output=difference between two lists:  [78, 4, 8, 90, 45, 67]
+
+case=t3
+input=10 20 30 50 40
+3 40 10 70 30
+output=difference between two lists:  [20, 50, 3, 70]
+
+PROGRAM:
+-------------------
+List1 = list(map(int,input().split()))
+list2 = list(map(int,input().split()))
+new_list1 = [] 
+for i in List1:
+	if i not in list2:
+		new_list1.append(i)
+
+for i in list2:
+	if i not in List1:
+		new_list1.append(i)
+print("difference between two lists: ",new_list1) 
+
+10. Write a Python program to Remove consecutive duplicates of a given list.
+#Test case example:
+------------------------------
+case=t1
+input=1,2,2,2,4,4,6,7
+output=List after removing consecutive duplicates: ['1', '2', '4', '6', '7']
+
+case=t2
+input=arun,arun,rcb,kohli,kohli,arsenal,football
+output=List after removing consecutive duplicates: ['arun', 'rcb', 'kohli', 'arsenal', 'football']
+
+case=t3
+input=1,2,3,4,5
+output=No consecutive duplicates
+
+case=t4
+Fail message="Normal hidden test case"
+input=1,6,7,3,3,5,5,8,8
+output=List after removing consecutive duplicates: [1, 6, 7, 3, 5, 8]
+
+PROGRAM:
+-----------------------------
+def remove_consecutive_duplicates(lst):
+    result = []
+    for i in range(len(lst)):
+        if i == 0 or lst[i] != lst[i-1]:
+            result.append(lst[i])
+
+    if result == lst:
+        print("No consecutive duplicates")
+    else:
+        print("List after removing consecutive duplicates:", result)
+
+
+
+user_input = input("Enter a list of values (comma-separated): ")
+given_list = user_input.split(',')
+remove_consecutive_duplicates(given_list)
+
+11. Write a Python program to replace the last value of tuples in a list.
+Test case Example:
+-----------------------------
+case=t1
+input=
+output=[(10, 20, 100), (40, 50, 100), (70, 80, 100)]
+
+case=t2
+input=
+output=
+
+case=t3
+fail message=
+input=
+output=
+
+PROGRAM:
+---------------------------------
+l = [(10, 20, 40), (40, 50, 60), (70, 80, 90)]
+print([t[:-1] + (100,) for t in l])
+
+12. Write a Python program to count the elements in a list until an element is a tuple.
+Test case Example
+case=t1
+input=
+output=
+
+case=t2
+fail message=
+input=
+output=
+
+case=t3
+input=
+output=
+
+PROGRAM:
+----------------------------
+num = [10,20,30,(10,20),40]
+ctr = 0
+for n in num:
+    if isinstance(n, tuple):
+        break
+    ctr += 1
+print(ctr)
+
+13. Write a Python program to convert a given string list to a tuple.
+Original string: python 3.0
+<class 'str'>
+Convert the said string to a tuple:
+('p', 'y', 't', 'h', 'o', 'n', '3', '.', '0')
+<class 'tuple'>
+
+Test case Example:
+---------------------------
+case=t1
+input=
+output=
+
+case=t2
+input=
+output=
+
+case=t3
+fail message=
+input=
+output=
+
+PROGRAM:
+--------------------------
+def string_list_to_tuple(str1):
+    result = tuple(x for x in str1 if not x.isspace()) 
+    return result
+str1 = "python 3.0"
+print("Original string:")
+print(str1)
+print(type(str1))
+print("Convert the said string to a tuple:") 
+print(string_list_to_tuple(str1))
+print(type(string_list_to_tuple(str1)))
+
+14. Write a Python program to calculate the average value of the numbers in a given tuple of tuples.
+Original Tuple:
+((10, 10, 10, 12), (30, 45, 56, 45), (81, 80, 39, 32), (1, 2, 3, 4))
+Average value of the numbers of the said tuple of tuples:
+[30.5, 34.25, 27.0, 23.25]
+Original Tuple:
+((1, 1, -5), (30, -15, 56), (81, -60, -39), (-10, 2, 3))
+Average value of the numbers of the said tuple of tuples:
+[25.5, -18.0, 3.75]
+
+Test case Example:
+--------------------------------
+#case=1
+input=
+output=
+
+PROGRAM:
+-----------------------------------
+def average_tuple(nums):
+    result = [sum(x) / len(x) for x in zip(*nums)]
+    return result
+
+nums = ((10, 10, 10, 12), (30, 45, 56, 45), (81, 80, 39, 32), (1, 2, 3, 4))
+print ("Original Tuple: ")
+print(nums)
+print("\nAverage value of the numbers of the said tuple of tuples:\n",average_tuple(nums))
+
+nums = ((1, 1, -5), (30, -15, 56), (81, -60, -39), (-10, 2, 3))
+print ("\nOriginal Tuple: ")
+print(nums)
+print("\nAverage value of the numbers of the said tuple of tuples:\n",average_tuple(nums))
+
+15.  Write a Python program to convert a tuple of string values to a tuple of integer values.
+Original tuple values:
+(('333', '33'), ('1416', '55'))
+New tuple values:
+((333, 33), (1416, 55))
+
+Test case Example:
+---------------------------------
+#case=1
+input=
+output=
+
+PROGRAM:
+---------------------------
+def tuple_int_str(tuple_str):
+    result = tuple((int(x[0]), int(x[1])) for x in tuple_str)
+    return result
+     
+tuple_str =  (('333', '33'), ('1416', '55'))
+print("Original tuple values:")
+print(tuple_str)
+print("\nNew tuple values:")
+print(tuple_int_str(tuple_str))
+
+16. Write a Python program to convert a given tuple of positive integers into an integer.
+Original tuple:
+(1, 2, 3)
+Convert the said tuple of positive integers into an integer:
+123
+Original tuple:
+(10, 20, 40, 5, 70)
+Convert the said tuple of positive integers into an integer:
+102040570
+
+Test case Example:
+-------------------------------
+#case=1
+input=
+output=
+
+PROGRAM:
+----------------------------------
+def tuple_to_int(nums):
+    result = int(''.join(map(str,nums)))
+    return result
+
+nums = (1,2,3)
+print("Original tuple: ") 
+print(nums)
+print("Convert the said tuple of positive integers into an integer:")
+print(tuple_to_int(nums))
+
+nums = (10,20,40,5,70)
+print("\nOriginal tuple: ") 
+print(nums)
+print("Convert the said tuple of positive integers into an integer:")
+print(tuple_to_int(nums))
+
+17.   Write a Python program to check if a specified element appears in a tuple of tuples.
+Original list:
+(('Red', 'White', 'Blue'), ('Green', 'Pink', 'Purple'), ('Orange', 'Yellow', 'Lime'))
+Check if White presenet in said tuple of tuples!
+True
+Check if White presenet in said tuple of tuples!
+True
+Check if Olive presenet in said tuple of tuples!
+False
+
+Test case Example:
+----------------------------------
+#case=1
+input=
+output=
+
+PROGRAM:
+-----------------------------------
+def check_in_tuples(colors, c):
+    result = any(c in tu for tu in colors)
+    return result
+
+colors = (
+    ('Red', 'White', 'Blue'),
+    ('Green', 'Pink', 'Purple'),
+    ('Orange', 'Yellow', 'Lime'),
+)
+print("Original list:")
+print(colors)
+c1 = 'White'
+print("\nCheck if",c1,"presenet in said tuple of tuples!")
+print(check_in_tuples(colors, c1))
+c1 = 'White'
+print("\nCheck if",c1,"presenet in said tuple of tuples!")
+print(check_in_tuples(colors, c1))
+c1 = 'Olive'
+print("\nCheck if",c1,"presenet in said tuple of tuples!")
+print(check_in_tuples(colors, c1))
+
+18. Write a Python program to compute the element-wise sum of given tuples.
+Original lists:
+(1, 2, 3, 4)
+(3, 5, 2, 1)
+(2, 2, 3, 1)
+Element-wise sum of the said tuples:
+(6, 9, 8, 6)
+
+Test case Example:
+---------------------------------
+#case=1
+input=
+output=
+
+PROGRAM:
+------------------------------------
+x = (1,2,3,4)
+y = (3,5,2,1)
+z = (2,2,3,1)
+print("Original lists:")
+print(x)
+print(y)
+print(z)
+print("\nElement-wise sum of the said tuples:")
+result = tuple(map(sum, zip(x, y, z)))
+print(result)
+
+19. Write a Python program to compute the sum of all the elements of each tuple stored inside a list of tuples.
+Original list of tuples:
+[(1, 2), (2, 3), (3, 4)]
+Sum of all the elements of each tuple stored inside the said list of tuples:
+[3, 5, 7]
+Original list of tuples:
+[(1, 2, 6), (2, 3, -6), (3, 4), (2, 2, 2, 2)]
+Sum of all the elements of each tuple stored inside the said list of tuples:
+[9, -1, 7, 8]
+
+Test case Example:
+-----------------------------------------
+#case=1
+input=
+output=
+
+PROGRAM:
+-----------------------------------
+def test(lst):
+    result =  map(sum, lst)
+    return list(result)
+
+nums = [(1,2), (2,3), (3,4)]
+print("Original list of tuples:")
+print(nums)
+print("\nSum of all the elements of each tuple stored inside the said list of tuples:")
+print(test(nums))
+
+nums = [(1,2,6), (2,3,-6), (3,4), (2,2,2,2)]
+print("\nOriginal list of tuples:")
+print(nums)
+print("\nSum of all the elements of each tuple stored inside the said list of tuples:")
+print(test(nums))
+
+20.  Write a Python program to convert a given list of tuples to a list of lists.
+Original list of tuples: [(1, 2), (2, 3), (3, 4)]
+Convert the said list of tuples to a list of lists: [[1, 2], [2, 3], [3, 4]]
+Original list of tuples: [(1, 2), (2, 3, 5), (3, 4), (2, 3, 4, 2)]
+Convert the said list of tuples to a list of lists: [[1, 2], [2, 3, 5], [3, 4], [2, 3, 4, 2]]
+
+Test case Example:
+--------------------------------------
+#case=1
+input=
+output=
+
+PROGRAM:
+-------------------------------------------------
+def test(lst_tuples):
+    result = [list(el) for el in lst_tuples]
+    return result
+lst_tuples = [(1,2), (2,3), (3,4)]
+print("Original list of tuples:")
+print(lst_tuples)
+print("Convert the said list of tuples to a list of lists:")
+print(test(lst_tuples))
+lst_tuples = [(1,2), (2,3,5), (3,4), (2,3,4,2)]
+print("\nOriginal list of tuples:")
+print(lst_tuples)
+print("Convert the said list of tuples to a list of lists:")
+print(test(lst_tuples))
+
+21. Get a list, sorted in increasing order by the last element in each tuple from a given list of non-empty tuples.
+Note: observe how to enter list of tuples in python. Give importance to spaces and characters.
+
+#Test case examples:
+--------------------------
+input= [(1, 3), (2, 5), (3, 1), (4, 9), (5, 2)]
+output=
+entered list of tuples: [(1, 3), (2, 5), (3, 1), (4, 9), (5, 2)]
+Sorted list of tuples: [(3, 1), (5, 2), (1, 3), (2, 5), (4, 9)]
+
+input=[(1, 'a'), (10, 'c'), (45, 'b')]
+output=entered list of tuples: [(1, 'a'), (10, 'c'), (45, 'b')]
+Sorted list of tuples: [(1, 'a'), (45, 'b'), (10, 'c')]
+
+Explaination: each tuple is sorted based on the increasing of the second element in the tuple.'''
+
+PROGRAM:
+---------------------------------------------------
+def last(n): return n[-1]
+
+def sort_list_last(tuples):
+  return sorted(tuples, key=last)
+
+print(sort_list_last([(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]))
+
