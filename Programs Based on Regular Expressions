@@ -1,1 +1,156 @@
+1. Write a Python program to find all three, four, and five character words in a string.
 
+Test case example:
+-----------------------------
+case=t1
+input=this is griet college python
+output=['this', 'griet']
+
+case=t2
+input=123 34 789 2343545 4543
+output=['123', '789', '4543']
+
+PROGRAM:
+-------------------------------
+import re
+text = input()
+print(re.findall(r"\b\w{3,5}\b", text))
+
+2. Write a Python program to remove everything except alphanumeric characters from a string.
+Test case example:
+-----------------------------
+case=t1
+input=arunkumar@griet.ac.in
+output=arunkumargrietacin
+
+case=t2
+input=contact: grietcpds@admin.moodle.in
+output=contactgrietcpdsadminmoodlein
+
+PROGRAM:
+--------------------------
+import re
+text1 = input()
+pattern = re.compile('[\W_]+')
+print(pattern.sub('', text1))
+
+3. Write a Python program to split a string into uppercase letters.
+Test case example:
+-----------------------------
+case=t1
+input=ThisISLife
+output=['This', 'I', 'S', 'Life']
+
+case=t2
+input=ILove Python Programming
+output=['I', 'Love ', 'Python ', 'Programming']
+
+case=t3
+fail message="the string doesn't contain any uppercase. print empty list"
+input=this is life
+output=[]
+
+PROGRAM:
+--------------------------------
+import re
+text = input()
+print(re.findall('[A-Z][^A-Z]*', text))
+
+4. Write a Python program to check a decimal with a precision of 2.
+
+Test case example:
+-----------------------
+case=t1
+input=23.54
+output=The number matches the pattern.
+
+case=t2
+input=23.5
+output=The number does not match the pattern.
+
+case=t3
+fail message="hidden test case"
+input=23.54
+output=The number matches the pattern.
+
+case=t4
+fail message="hidden test case"
+input=23.5
+output=The number does not match the pattern.
+
+PROGRAM:
+----------------------------
+import re
+num=input()
+dnum = re.compile(r"^[0-9]+(\.[0-9]{1,2})?$")
+result = dnum.search(num)
+if result:
+    print("The number matches the pattern.")
+else:
+    print("The number does not match the pattern.")
+
+5. Write a Python program to split a string with multiple delimiters which are ., *, -.
+Test case example:
+-------------------------
+case=t1
+input=input=this is griet. Python*programming-regex
+output=['this is griet', ' Python', 'programming', 'regex']
+
+case=t2
+fail message="hidden test case"
+input=input=this is griet. Python*programming-regex
+output=['this is griet', ' Python', 'programming', 'regex']
+
+PROGRAM:
+------------------------------
+import re
+text=input()
+#text = 'This is Griet. Python Programming-regular expressions'
+print(re.split('\.|\-|\*|\n',text))
+
+6. Write a Python program to split a string with multiple delimiters.
+
+Test case example:
+-------------------------------
+case=t1
+input=thisisGRIETcollegePYTHONprogramming
+output=GRIETPYTHON
+
+case=t2
+input=Python Programming GRIET 
+output=P P GRIET 
+
+case=t3
+fail message="hidden test case"
+input=ARSENALgunners
+output=ARSENAL
+
+PROGRAM:
+--------------------------------
+import re
+str1 = input()
+#print("After removing lowercase letters:")
+remove_lower = lambda text: re.sub('[a-z]', '', text)
+result =  remove_lower(str1)
+print(result)
+
+7. Write a python program to remove parenthesis and its data from the given sentence.
+Test case example:
+---------------------------
+case=t1
+input=arun (mail.com) GRIET(college)
+output=arun  GRIET  
+
+case=t2
+fail message="output is ackgriet"
+input=ack(gmail.com)griet(college)
+output=ackgriet 
+
+PROGRAM:
+---------------------------
+import re
+items = input().split()
+for item in items:
+    print(re.sub(r" ?\([^)]+\)", "", item),end=" ")
+
+8. 
