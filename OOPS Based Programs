@@ -1,0 +1,501 @@
+1.Write a Python program to create a Vehicle class with max_speed and mileage instance attributes.
+Read the data from user and initialize.
+
+Test case example:
+--------------------------
+case=t1
+input=140
+45
+output=140 45
+
+case=t1
+fail message="hidden test case"
+input=140
+46
+output=140 46
+
+PROGRAM:
+-----------------------------
+class Vehicle:
+    def __init__(self, max_speed, mileage):
+        self.max_speed = max_speed
+        self.mileage = mileage
+        
+a= int(input())
+b = int(input())
+model = Vehicle(a, b)
+print(model.max_speed, model.mileage)
+
+2. Write a Python program to create a class representing a Circle. 
+Include methods to calculate its area and perimeter. 
+read radius data from user using any of the constructor.
+
+Test case example:
+--------------------------------
+case=t1
+input=5
+output=Area of the circle: 78.54
+Perimeter of the circle:31.42
+
+case=t1
+fail message="hidden test case"
+input=10
+output=Area of the circle: 314.16
+Perimeter of the circle: 62.83
+
+PROGRAM:
+-------------------------------
+import math
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def circle_area(self):
+        return math.pi * self.radius**2
+    
+    def circle_perimeter(self):
+        return 2 * math.pi * self.radius
+
+
+radius = float(input())
+circle = Circle(radius)
+area = circle.circle_area()
+perimeter = circle.circle_perimeter()
+print("Area of the circle: {:.2f}".format(area))
+print("Perimeter of the circle:{:.2f}".format(perimeter))
+
+3. Write a class called Item that represents an item for sale. It should have the following:
+•	Fields representing the name and price of the item
+•	A constructor that sets those fields,
+•	A str() method that returns a string containing the item name and price, with the price formatted to exactly 2 decimal places
+Read the data from user.
+
+Test case example:
+--------------------------------
+case=t1
+input=study table
+5000
+output=
+Name: study table
+Price: 5000.00
+
+case=t2
+input=cooker
+3000.5678
+output=
+Name: cooker
+Price: 3000.57
+
+case=t3
+fail message="hidden case"
+input=mobile
+12550
+output=
+Name: mobile
+Price: 12550.00
+
+PROGRAM:
+---------------------------------
+class Item:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def __str__(self):
+        return "Name: {}\nPrice: {:.2f}".format(self.name, self.price)
+
+name = input()
+price = float(input())
+
+item = Item(name, price)
+
+print(item)
+
+
+4. Write a class called BankAccount that has the following fields:
+    Name of account holde, balance and interest rate.
+•	A constructor that just sets the values of the three fields above.
+•	A method  called  apply_interest() that  takes  no arguments  and  applies  the interest  to  the account. 
+    It should just modify the amount field and not return anything.
+    For example:
+    if the account has Rs.1000 in it and the interest rate is 3%, then the amount variable should be changed
+    to Rs.1030 (Rs.1000 + 3% interest).
+    
+    Then test the class, by creating a new BankAccount object for a user data entered on screen
+    and do the following:
+    
+•	Use the apply_interest() method to apply the interest to the account.
+•	Print out how much money is now in the account after applying the interest.
+•	Change the account’s interest rate to 7%.
+•	Use the apply_interest() method to apply the interest to the account again.
+•	Print out how much money is now in the account after applying the interest again.
+
+Sample test case:
+-------------------
+case=t1
+input=Arunkumar
+10500
+8.5
+7
+output=
+11392.50
+12189.98
+
+case=t2
+input=virat kohli
+3450405
+8
+7
+output=
+3726437.40
+3987288.02
+
+case=t3
+fail message="hidden test case"
+input=ajay rao
+5000
+12
+7
+output=
+5600.00
+5992.00
+
+PROGRAM:
+-----------------------------------
+class BankAccount:
+    def __init__(self, name, amount, interest_rate):
+        self.name = name
+        self.amount = amount
+        self.interest_rate = interest_rate
+
+    def apply_interest(self):
+        interest_amount = self.amount * self.interest_rate / 100
+        self.amount += interest_amount
+
+name = input()
+amount = float(input())
+interest_rate = float(input())
+
+account = BankAccount(name, amount, interest_rate)
+account.apply_interest()
+print("{:.2f}".format(account.amount))
+
+account.interest_rate = float(input())
+account.apply_interest()
+print("{:.2f}".format(account.amount))
+
+5. Write a class called ShoppingCart that might be used in an online store. It should have the following:
+•	A list of Item objects that represents the items in the shopping cart.
+•	A constructor that creates an empty list of items (the constructor should take no arguments except self)
+•	A method called add() that takes a name and a price and adds an Item object with that name and price to the shopping cart.
+•	A method called total() that takes no arguments and returns the total cost of the items in the cart.
+ 
+•	A method called remove_items() that takes an item name (a string) and removes any Item
+objects with that name from the shopping cart. It shouldn’t return anything.
+•	Astr () method that returns a string containing info on all the items in the shopping cart
+Then test out the shopping cart as follows: 
+(1) create a shopping cart.
+(2) add several items to it.
+(3) print the cart's total cost (using the total() method).
+(4) remove one of the items types; 
+(5) print out the cart.
+
+Test case Example:
+--------------------------------
+case=t1
+input=1
+bread
+30
+1
+milk
+25
+1
+chocolate
+20
+2
+3
+milk
+4
+5
+output=
+Item added to cart.
+Item added to cart.
+Item added to cart.
+Total cost of items in the cart: 75.0
+Item removed from cart.
+Items in the cart:
+bread: rs.30.0
+chocolate: rs.20.0
+
+case=t2
+fail message="hidden test case"
+input=1
+atta
+30
+1
+milk
+25
+1
+chocolate
+20
+2
+3
+milk
+4
+5
+output=
+Item added to cart.
+Item added to cart.
+Item added to cart.
+Total cost of items in the cart: 75.0
+Item removed from cart.
+Items in the cart:
+atta: rs.30.0
+chocolate: rs.20.0
+
+PROGRAM:
+-----------------------------------
+class Item:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def __str__(self):
+       return "{}: rs.{}".format(self.name, self.price)
+
+
+class ShoppingCart:
+    def __init__(self):
+        self.items = []
+
+    def add(self, name, price):
+        item = Item(name, price)
+        self.items.append(item)
+
+    def total(self):
+        return sum(item.price for item in self.items)
+
+    def remove_items(self, name):
+        self.items = [item for item in self.items if item.name != name]
+
+    def __str__(self):
+        return '\n'.join(str(item) for item in self.items)
+
+cart = ShoppingCart()
+#print("1.Add item\n2.calculate total\n3.Remove Item\n4.View Cart\n5.Exit")
+while True:
+    choice = input()
+
+    if choice == '1':
+        name = input()
+        price = float(input())
+        cart.add(name, price)
+        print("Item added to cart.")
+
+    elif choice == '2':
+       print("Total cost of items in the cart:", cart.total())
+
+    elif choice == '3':
+        name = input()
+        cart.remove_items(name)
+        print("Item removed from cart.")
+
+    elif choice == '4':
+        print("Items in the cart:")
+        print(cart)
+
+    elif choice == '5':
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
+
+6.  Create a Bus child class that inherits from the Vehicle class. 
+The default fare charge of any vehicle is seating capacity * 100. If Vehicle is Bus instance, 
+we need to add an extra 10% on full fare as a maintenance charge. 
+So total fare for bus instance will become the final amount = total fare + 10% of the total fare.
+
+Note: The bus seating capacity is 50. so the final fare amount should be 5500. 
+You need to override the fare() method of a Vehicle class in Bus class.
+
+Sample test case:
+-------------------
+case=t1
+input=volvo
+30
+35
+output=Total Bus fare is: 3850.0
+
+case=t2
+input=ashok leyland
+34
+23
+output=Total Bus fare is: 2530.0
+
+case=t3
+fail message="test case hidden"
+input=KSRTC
+15
+35
+output=Total Bus fare is: 3850.0
+
+PROGRAM:
+-----------------------------
+class Vehicle:
+    def __init__(self, name, mileage, capacity):
+        self.name = name
+        self.mileage = mileage
+        self.capacity = capacity
+
+    def fare(self):
+        return self.capacity * 100
+
+class Bus(Vehicle):
+    def fare(self):
+        amount = super().fare()
+        amount += amount * 10 / 100
+        return amount
+
+name = input().split()
+mileage = float(input())
+capacity = int(input())
+
+School_bus = Bus(name, mileage, capacity)
+
+print("Total Bus fare is:", School_bus.fare())
+
+7.  Create a Parent class named as "Vehicle" which has fields name and color.
+Create a child class named as "Car" which inherits properties name and color from parent class i.e it initializes instances using parent class.
+Vehichle class has 2 methods:
+1. Max_speed()-- where vehicle maximum speed is 150
+2. gears()-- which indicates number of gears for vehicle.
+3. show()-- method which prints the entered details.
+
+Child class Car need to implement both above methods and change vehicle max speed as 250 and number of gears as 7.
+Child class Car has to display the entered data using parent class method show()
+
+Complete the program by reading name of vehicle and its details and car name and its details from the user.
+Read parent class details first and print.
+Next read child class details and print.
+Observe the test cases and the output order.
+
+Sample test case:
+-------------------
+case=t1
+input=Bus Orange
+BMW black
+output=
+Vehicle Details: Bus Orange
+Vehicle maximum speed is: 150
+Vehicle Bus has 6 gears
+Vehicle Details: BMW black
+Car maximum speed is: 250
+BMW has 7 gears
+
+case=t2
+input=Van yellow
+Audi white
+output=
+Vehicle Details: Van yellow
+Vehicle maximum speed is: 150
+Vehicle Van has 6 gears
+Vehicle Details: Audi white
+Car maximum speed is: 250
+Audi has 7 gears
+
+case=t3
+fail message="hidden case"
+input=Bus yellow
+Audi red
+output=
+Vehicle Details: Bus yellow
+Vehicle maximum speed is: 150
+Vehicle Bus has 6 gears
+Vehicle Details: Audi red
+Car maximum speed is: 250
+Audi has 7 gears
+
+
+PROGRAM:
+----------------------------
+class Vehicle:
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
+
+    def show(self):
+        print('Vehicle Details:', self.name, self.color)
+
+    def max_speed(self):
+        print('Vehicle maximum speed is: 150')
+
+    def gears(self):
+        print('Vehicle',self.name,'has 6 gears')
+
+class Car(Vehicle):
+    def max_speed(self):
+        print('Car maximum speed is: 250')
+
+    def gears(self):
+        print(self.name,'has 7 gears')
+
+name,color = input().split()
+vehicle = Vehicle(name,color)
+vehicle.show()
+vehicle.max_speed()
+vehicle.gears()
+
+name,color = input().split()
+
+car = Car(name,color)
+car.show()
+car.max_speed()
+car.gears()
+
+8. Create a a class called Shopping. It has two instances. an empty list basket and buyer.
+Override the inbuilt method length (len) function to return the total number of items in the basket multiplied by 2.
+Create another method read which is used to enter the name of buyer and items to be stored in the basket.
+print Buyer name, Basket content and number of items each on the new line.
+
+Sample test case:
+-------------------
+case=t1
+input=Arun
+bread milk chocolate
+output=Buyer: Arun
+Basket: ['bread', 'milk', 'chocolate']
+Number of items: 6
+
+case=t2
+fail message="hidden case"
+input=Akash
+phone chocolate milk shampoo soap
+output=Buyer: Akash
+Basket: ['phone', 'chocolate', 'milk', 'shampoo', 'soap']
+Number of items: 10
+
+Enter bus name followed by mileage and seating capacity.
+
+PROGRAM:
+------------------------------------
+class Shopping:
+    def __init__(self):
+        self.basket = []
+        self.buyer = ""
+
+    def __len__(self):
+        count = len(self.basket)
+        return count * 2
+
+    def read(self):
+        self.buyer = input()
+        items = input()
+        self.basket = items.split()
+
+shopping = Shopping()
+shopping.read()
+print("Buyer:", shopping.buyer)
+print("Basket:", shopping.basket)
+print("Number of items:", len(shopping))
+
+9.  
