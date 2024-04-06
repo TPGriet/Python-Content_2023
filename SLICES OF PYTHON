@@ -12,12 +12,10 @@ output=GRET
 
 PROGRAM:
 --------------------
-string=input()
-count=0
-for i in string:
-      count=count+1
-new=string[0:2]+string[count-2:count]
-print(new)
+str = input()
+new_string = str[:2] + str[-2:]
+print(new_string)
+
 
 2. As u guys know Allu Arjun and Sneha Reddy are married for a long time. Sneha Reddy now wants to update her twitter name as: Sneha Allu Reddy. Write a python program to do the same.
 Note: use only string slicing method.
