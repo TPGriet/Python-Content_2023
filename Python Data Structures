@@ -189,6 +189,11 @@ for i in range(len(L)):
     else:
         N.append(M[i])
 print(N)
+OR
+# L = eval(input())
+# M = eval(input())
+# N = [max(l, m) for l, m in zip(L, M)]
+# print(N)
 
 5. Write a program that asks the user to enter two lists of the same size.
 Then put the lists together into a new list by alternately taking items from the two lists, like in a riffle shuffle. 
@@ -220,6 +225,7 @@ for i in range(len(L)):
     N.append(L[i])
     N.append(M[i])
 print(N)
+
 
 6. Write a program that rotates all the elements in a list one element to the left, with the first element rotating to the end.
 For instance, if the list is [1,2,3,4], it would rotate into [2,3,4,1].
